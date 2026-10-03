@@ -1,0 +1,13 @@
+{
+  "name": "workforce-planner",
+  "version": "1.0.0",
+  "description": "Analyzes team capacity, hiring needs and budget affordability for a project, across any industry (IT, Civil, Mechanical, etc.)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}

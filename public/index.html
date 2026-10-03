@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workforce Capacity & Budget Planner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Workforce Capacity &amp; Budget Planner</h1>
+    <p class="subtitle">Figure out how many more people you need to hire — and what you can actually afford to pay them.</p>
+  </header>
+
+  <main>
+    <!-- Employee management -->
+    <section class="card">
+      <h2>1. Current Team</h2>
+      <form id="employee-form" class="grid-form">
+        <input type="text" id="emp-name" placeholder="Employee name" required />
+        <select id="emp-industry" required>
+          <option value="IT">IT</option>
+          <option value="Civil">Civil</option>
+          <option value="Mechanical">Mechanical</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" id="emp-role" placeholder="Role (e.g. Senior Developer)" required />
+        <input type="number" id="emp-hours" placeholder="Hours worked / day" min="0" max="24" step="0.5" required />
+        <input type="number" id="emp-salary" placeholder="Monthly salary (₹)" min="0" required />
+        <input type="number" id="emp-output" placeholder="Daily output units (optional)" min="0" />
+        <button type="submit">Add Employee</button>
+      </form>
+
+      <table id="employee-table">
+        <thead>
+          <tr>
+            <th>Name</th><th>Industry</th><th>Role</th><th>Hrs/day</th><th>Salary (₹/mo)</th><th>Output/day</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p class="empty-note" id="employee-empty-note">No employees added yet — add your current team above.</p>
+    </section>
+
+    <!-- Project requirements -->
+    <section class="card">
+      <h2>2. Project Requirements</h2>
+      <form id="analyze-form" class="grid-form">
+        <input type="number" id="proj-hours" placeholder="Total work required (person-hours)" min="1" required />
+        <input type="number" id="proj-days" placeholder="Days remaining until deadline" min="1" required />
+        <input type="number" id="proj-budget" placeholder="Total budget for this period (₹)" min="0" required />
+        <select id="proj-industry">
+          <option value="IT">Hiring industry: IT</option>
+          <option value="Civil">Hiring industry: Civil</option>
+          <option value="Mechanical">Hiring industry: Mechanical</option>
+          <option value="Other">Hiring industry: Other</option>
+        </select>
+        <button type="submit">Analyze</button>
+      </form>
+    </section>
+
+    <!-- Results -->
+    <section class="card" id="results" hidden>
+      <h2>3. Analysis</h2>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <span class="stat-label">Current team capacity</span>
+          <span class="stat-value" id="stat-capacity">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Hours shortfall</span>
+          <span class="stat-value" id="stat-shortfall">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Additional hires needed</span>
+          <span class="stat-value" id="stat-hires">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Projected current labor cost</span>
+          <span class="stat-value" id="stat-current-cost">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Budget left for new hires</span>
+          <span class="stat-value" id="stat-remaining-budget">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Affordable salary / new hire</span>
+          <span class="stat-value" id="stat-affordable">-</span>
+        </div>
+      </div>
+
+      <div class="bar-chart" id="capacity-chart"></div>
+
+      <p class="note" id="affordability-note"></p>
+
+      <h3>Roles you could realistically hire for</h3>
+      <table id="role-table">
+        <thead><tr><th>Role</th><th>Benchmark salary (₹/mo)</th><th>Affordable?</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
